@@ -43,7 +43,7 @@ const UserProfile = ({ params }) => {
   useEffect(() => {
     handleGetUserList();
     handleRestrictSpecificId();
-  }, []);
+  });
 
   return (
     <div className="text-black">

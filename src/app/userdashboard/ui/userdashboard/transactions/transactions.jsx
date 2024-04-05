@@ -43,7 +43,7 @@ const Transactions = () => {
         </thead>
         <tbody>
           {transactionData.map((data) => (
-            <tr>
+            <tr key={data?.name}>
               <td>
                 <div className={styles.user}>
                   <Image

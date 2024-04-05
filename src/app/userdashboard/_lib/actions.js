@@ -3,23 +3,21 @@ import dbConnection from "@/lib/dbConnection";
 import { UserDashboard as UserDashboardModel } from "./models";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import { signIn } from "../auth";
+
 export const handleSubmitLoginForm = async (prevState, formData) => {
-  setTimeout(() => {
-    const { username, password } = Object.fromEntries(formData);
-
-    console.log(prevState, "prevState");
-    console.log(username, password, "formData");
-
-    try {
-      // alert("Submitted");
-      // await signIn("credentials", { username, password });
-    } catch (err) {
-      if (err.message.includes("CredentialsSignin")) {
-        return "Wrong Credentials";
-      }
-      throw err;
+  const { username, password } = Object.fromEntries(formData);
+  try {
+    await signIn("credentials", { username, password });
+  } catch (err) {
+    if (err.message.includes("CredentialsSignin")) {
+      return {
+        ...prevState,
+        error: "Wrong Credentials",
+      };
     }
-  }, 3000);
+    throw err;
+  }
 };
 
 export const getDashboardUserList = async (searchQuery, page) => {

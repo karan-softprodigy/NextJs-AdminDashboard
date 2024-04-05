@@ -6,7 +6,6 @@ import { handleSubmitLoginForm } from "@/app/userdashboard/_lib/actions";
 
 const SubmitButton = () => {
   const { pending, data, method, action } = useFormStatus();
-  console.log(pending, "pending");
   return (
     <button type="submit" disabled={pending}>
       {pending ? "Submitting..." : "Submit"}
@@ -17,7 +16,7 @@ const SubmitButton = () => {
 const LoginForm = () => {
   const [formState, formAction] = useFormState(handleSubmitLoginForm, {
     message: "",
-    errors: undefined,
+    error: undefined,
     fieldValues: {
       username: "",
       password: "",
@@ -27,10 +26,12 @@ const LoginForm = () => {
   return (
     <form action={formAction} className={styles.form}>
       <h1>Login</h1>
-      <input type="text" placeholder="username" name="username" />
-      <input type="password" placeholder="password" name="password" />
+      <input type="text" placeholder="Username" name="username" required />
+      <input type="password" placeholder="Password" name="password" required />
       <SubmitButton />
-      {/* {formState && formState} */}
+      <span className="text-red-600">
+        {formState?.error && formState?.error}
+      </span>
     </form>
   );
 };
