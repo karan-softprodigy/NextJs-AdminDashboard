@@ -4,7 +4,7 @@ import styles from "./transactions.module.css";
 const Transactions = () => {
   const transactionData = [
     {
-      name: "Micaheal Clark",
+      name: "Micaheal Clark Singh",
       status: "Cancelled",
       date: "14.02.2024",
       amount: "$5.200",

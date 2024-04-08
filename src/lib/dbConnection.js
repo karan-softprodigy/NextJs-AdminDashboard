@@ -5,11 +5,14 @@ export default async () => {
   try {
     const DB_OPTIONS = {
       dbName: process.env.DB_NAME,
-      user: process.env.DB_USERNAME,
-      pass: process.env.DB_PASSWORD,
-      authSource: process.env.DB_AUTH_SOURCE,
+      // key: process.env.DATA_API_KEY,
+      // apiKey: process.env.DATA_API_KEY,
+      // apiURL: process.env.DATA_API_URL,
+      // user: process.env.DB_USERNAME,
+      // pass: process.env.DB_PASSWORD,
+      // authSource: process.env.DB_AUTH_SOURCE,
     };
-    await mongoose.connect(process.env.MONGODB_URI);
+    await mongoose.connect(process.env.MONGODB_URI, DB_OPTIONS);
     // await mongoose.connect(process.env.DB_URL, DB_OPTIONS);
 
     console.log("DB connected successfully...");
