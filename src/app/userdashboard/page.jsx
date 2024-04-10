@@ -16,7 +16,7 @@ const UserDashboard = () => {
     {
       id: 2,
       title: "Stock",
-      number: 8.236,
+      number: 9.236,
       change: -2,
     },
     {
